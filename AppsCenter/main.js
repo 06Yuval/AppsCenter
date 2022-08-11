@@ -30,18 +30,19 @@ document.addEventListener("DOMContentLoaded", () => {
     tag_id.innerHTML = map;
 
 
-    let searchInput = document.getElementById("search");
-    searchInput.addEventListener("keyup", (event) => {
-        let { value } = event.target;
-        let searchQuery = value.toLowerCase();
-        for(let app of applications) {
-            let name = app.textContent.toLowerCase();
-            if(name.includes(searchQuery)) {
-                app.style.display = "block";
-            }
-            else {
-                nameElement.style.display = "none";
-            }
+
+    function searchApp() {
+      let input = document.getElementById('search').value
+      input= input.toLowerCase();
+      let listApp = document.getElementsByClassName("card mb-3");
+      let listAppNames = document.getElementsByClassName("card-title");
+      for(let i = 0; i < listApp.length; i++) {
+        if(!listAppNames[i].innerHTML.toLowerCase().includes(input)) {
+          listApp[i].style.display="none"
         }
-    });
+        else {
+          listApp[i].style.display = "block";
+        }
+      }
+    }
 

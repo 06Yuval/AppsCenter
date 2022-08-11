@@ -41,7 +41,7 @@
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Company name*:</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Company name:</span>
             </div>
             <input id="companyName" placeholder="Company name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
           </div>
@@ -53,10 +53,14 @@
             <input id="ImageUrl" type="file" accept="image/*" class="form-control">
           </div>
 
-          <button id="new"class="btn btn-success" type="button">
+          <button id="new" class="btn btn-success" onclick="publishApp()" type="button">
             Publish application</button>
             <p><b>* - required</b></p>
+            <p id="error" style="color: red; display: false; display: none;">Oops, something went wrong! <br> Check your fields again.</p>
+
     </form>
+
+    <script src="AddApp.js"></script>
 
 </body>
 </html>
