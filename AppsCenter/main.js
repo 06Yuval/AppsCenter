@@ -8,9 +8,12 @@ const getData = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  getData()
 });
 
-    let map = applications.map((x) => `
+
+function load() {
+    let map = getData().map((x) => `
     <div class="card mb-3" style="max-width: 500px;">
     <div class="row no-gutters">
       <div class="col-md-4">
@@ -28,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     map = map.join("");
     let tag_id = document.getElementById("container");
     tag_id.innerHTML = map;
+}
 
 
 

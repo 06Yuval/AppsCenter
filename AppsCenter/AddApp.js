@@ -17,15 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
 function publishApp() {
     let regName = new RegExp(/\w{4,30}$/);
     let boolName = regName.test(document.getElementById("name").value);
+    let appName = document.getElementById("name").value;
 
     let regPrice = new RegExp(/[0-9]/);
     let boolPrice = regPrice.test(document.getElementById("price").value);
+    let appPrice = document.getElementById("price").value;
 
     let regDesc = new RegExp(/\w{0,300}$/);
-    let desc = document.getElementById("description").value
-    let boolDesc = regDesc.test(desc)
-    if(desc.length == 0) {
-        desc = "this app does not have description";
+    let descp = document.getElementById("description").value
+    let boolDesc = regDesc.test(descp)
+    if(descp.length == 0) {
+        descp = "this app does not have description";
     }
 
     let regCompany = new RegExp(/\w{0,30}$/);
@@ -37,29 +39,46 @@ function publishApp() {
 
     let regImage = new RegExp(/\.{0,300}$/);
     let imgUrl = document.getElementById("ImageUrl").value
-    let boolImage = regImage.test(imgUrl)
     if(imgUrl.length == 0) {
         imgUrl = "Help.png";
     }
+    else {
+     imgUrl = document.getElementById("ImageUrl").files[0].name; 
+    }
+    let boolImage = regImage.test(imgUrl)
 
     let errorMessage = document.getElementById("error");
     if(!(boolCompany && boolDesc && boolImage && boolName && boolPrice)) {
         errorMessage.style.display = "block";
+        document.getElementById("name").style.borderColor = "green";
+        document.getElementById("price").style.borderColor = "green";
+        if(!boolName) {
+        document.getElementById("name").style.borderColor = "red"; }
+        if(!boolPrice) {
+        document.getElementById("price").style.borderColor = "red"; }
+        document.getElementById("companyName").style.borderColor = "green";
+        document.getElementById("ImageUrl").style.borderColor = "green";
+        document.getElementById("description").style.borderColor = "green";
     }
     else {
         errorMessage.style.display = "none";
-        let applicationToAdd = [
+        document.getElementById("companyName").style.borderColor = "green";
+        document.getElementById("ImageUrl").style.borderColor = "green";
+        document.getElementById("description").style.borderColor = "green";
+        document.getElementById("name").style.borderColor = "green";
+        document.getElementById("price").style.borderColor = "green";
+
+         let appAdd = [
             {
                 'id': getNextId(),
                 'imageUrl': imgUrl,
-                'name': document.getElementById("name").value,
-                'price': document.getElementById("price").value,
-                'desc': desc,
+                'name': appName ,
+                'price': appPrice,
+                'desc': descp,
                 'companyName': companyName
             }];
-            console.log(applicationToAdd);
-            
-            let String = 
-            addItemToTheList(applicationToAdd);
+            addItemToTheList(appAdd);
+            document.getElementById("uploaded").style.display = "block";
+        
     }
 }
