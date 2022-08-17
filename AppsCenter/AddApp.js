@@ -19,7 +19,7 @@ function publishApp() {
     let boolName = regName.test(document.getElementById("name").value);
     let appName = document.getElementById("name").value;
 
-    let regPrice = new RegExp(/[0-9]/);
+    let regPrice = new RegExp(/^\d*[1-9]\d*$/);
     let boolPrice = regPrice.test(document.getElementById("price").value);
     let appPrice = document.getElementById("price").value;
 
