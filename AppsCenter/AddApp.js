@@ -11,6 +11,10 @@ const getNextId = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    
+    function onSumbit(event) {
+        event.preventDefault();
+    }
 		
 });
 
@@ -31,19 +35,19 @@ function publishApp() {
     }
 
     let regCompany = new RegExp(/\w{0,30}$/);
-    let companyName = document.getElementById("companyName").value
+    let companyName = document.getElementById("companyName").value;
     let boolCompany = regCompany.test(companyName)
     if(companyName.length == 0) {
         companyName = "this app does not have a company";
     }
 
     let regImage = new RegExp(/\.{0,300}$/);
-    let imgUrl = document.getElementById("ImageUrl").value
+    let imgUrl = document.getElementById("ImageUrl").value;
     if(imgUrl.length == 0) {
         imgUrl = "Help.png";
     }
     else {
-     imgUrl = document.getElementById("ImageUrl").files[0].name; 
+     imgUrl = document.getElementById("ImageUrl").value; 
     }
     let boolImage = regImage.test(imgUrl)
 
@@ -52,19 +56,16 @@ function publishApp() {
         errorMessage.style.display = "block";
         document.getElementById("name").style.borderColor = "green";
         document.getElementById("price").style.borderColor = "green";
+        document.getElementById("companyName").style.borderColor = "green";
+        document.getElementById("ImageUrl").style.borderColor = "green";
+        document.getElementById("description").style.borderColor = "green";
         if(!boolName) {
         document.getElementById("name").style.borderColor = "red"; }
         if(!boolPrice) {
         document.getElementById("price").style.borderColor = "red"; }
-        document.getElementById("companyName").style.borderColor = "green";
-        document.getElementById("ImageUrl").style.borderColor = "green";
-        document.getElementById("description").style.borderColor = "green";
     }
     else {
         errorMessage.style.display = "none";
-        document.getElementById("companyName").style.borderColor = "green";
-        document.getElementById("ImageUrl").style.borderColor = "green";
-        document.getElementById("description").style.borderColor = "green";
         document.getElementById("name").style.borderColor = "green";
         document.getElementById("price").style.borderColor = "green";
 

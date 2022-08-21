@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./main.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AppsCenter</title>
+    <link rel="icon" href="../Assets/favicon.ico">
+
+</head>
+
+<body onload="load()">
+    <header class="text-center">
+        <img src="../Assets/images/AppsCenter.png">
+    </header>
+    <br><br>
+    <form style="margin:auto;max-width:820px; height: 38px;">
+        <div class="input-group mb-3">
+            <input class="search" onkeyup="searchApp()" type="text" id="search" placeholder="App to search...">
+            <div class="input-group-append">
+                <button class="btn btn-light" type="button" style="border-color:#ced4da;"><i
+                        class="fa fa-search"></i></button>
+            </div>
+            <a href="./addApplication.html"><button id="new" class="btn btn-success" type="button">
+                    + Publish new App</button></a>
+        </div>
+    </form>
+
+    <div class="container vertical-center" id="containerEl">
+    </div>
+    <script src="../AppsCenter/applications.js"></script>
+    <script src="../AppsCenter/main.js"></script>
+</body>
+
+</html>
