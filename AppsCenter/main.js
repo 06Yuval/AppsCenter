@@ -1,17 +1,10 @@
-const getData = () => {
-    if (localStorage.getItem('applications') == null) {
-        localStorage.setItem('applications', JSON.stringify(applications));
-        localStorage.setItem('id', id);
-    }
-
-    return JSON.parse(localStorage.getItem('applications'));
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  arr = getData();
-  load(arr);
+  loadApps();
 });
 
+document.getElementById("search").addEventListener("keyup", async () => {
+  filterApps();
+});
 
 function load(arr) {
     let strHTML = arr.map((x) => `
@@ -23,7 +16,7 @@ function load(arr) {
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">${x.name}</h5>
-          <p class="card-text">${x.desc}</p>
+          <p class="card-text">${x.descr}</p>
           <p class="card-text"><small class="text-muted">price:  ${x.price}$ <br> company name: ${x.companyName}</small></p>
         </div>
       </div>
@@ -36,9 +29,9 @@ function load(arr) {
 
 
 
-    function searchApp() {
+    function searchApp(arr) {
       let input = document.getElementById('search').value.toLowerCase();
-      const filterArray = getData().filter((app) => {
+      const filterArray = arr.filter((app) => {
         if(app.name.toLowerCase().includes(input)) {
           return app;
         }

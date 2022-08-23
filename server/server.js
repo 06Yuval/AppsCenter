@@ -32,15 +32,14 @@ app.get("/api/applications", async (req, res) => {
 app.post("/api/applications", async (req, res) => {
     const newApp = {
         "id": shortid.generate(),
-        "imageUrl": req.body.imageUrl,
+        "imageUrl": req.body.imageUrl || "Help.png",
         "name": req.body.name,
         "price": req.body.price,
-        "desc": req.body.desc,
-        "companyName": req.body.companyName,
+        "desc": req.body.desc  || "this app does not have description",
+        "companyName": req.body.companyName  || "this app does not have a company",
         "createdAt": new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
     };
     addApp(newApp);
-    res.send(newApp);   
 });
 
 app.delete("/api/applications/:id", async (req, res) => {
