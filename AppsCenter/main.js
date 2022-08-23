@@ -18,7 +18,7 @@ function load(arr) {
     <div class="card mb-3" style="max-width: 500px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img src="../Assets/images/${x.id}/${x.imageUrl}" class="card-img" style="width: 150px; border-radius: 50%;">
+        <img src="../client/assets/images/${x.imageUrl}" class="card-img" style="width: 150px; border-radius: 50%;">
       </div>
       <div class="col-md-8">
         <div class="card-body">

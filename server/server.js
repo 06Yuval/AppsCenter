@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const shortid = require("shortid");
-const {getAll, addApp, checkIfExists, deleteApp} =  require("./queries.js");
+const {getAll, addApp, getSingleApp, deleteApp} =  require("./queries.js");
 
 const app = express();
 app.use(express.json());
@@ -45,7 +45,7 @@ app.post("/api/applications", async (req, res) => {
 
 app.delete("/api/applications/:id", async (req, res) => {
     const appID = req.params.id;
-    const check = await checkIfExists(appID);
+    const check = await getSingleApp(appID);
     if(!check || !check.length) {
         res.status(404).send("Not exist");
     } else {

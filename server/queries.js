@@ -25,7 +25,7 @@ async function addApp(app) {
     }
 }   
 
-async function checkIfExists(appID) {
+async function getSingleApp(appID) {
     const client = await connection();
     try {
         const result = await client.query(`SELECT * FROM applications.t_apps WHERE id = '${appID}'`);
@@ -48,4 +48,4 @@ async function deleteApp(appID) {
     }
 }
 
-module.exports = {getAll, addApp, checkIfExists, deleteApp};
+module.exports = {getAll, addApp, getSingleApp, deleteApp};
