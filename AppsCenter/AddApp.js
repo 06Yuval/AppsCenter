@@ -1,3 +1,5 @@
+const { getSingleApp } = require("../server/queries");
+
 document.addEventListener("DOMContentLoaded", () => {
     function onSumbit(event) {
         event.preventDefault();
@@ -9,7 +11,7 @@ function publishApp() {
     let regName = new RegExp(/\w{4,30}$/);
     let boolName = regName.test(document.getElementById("name").value);
 
-    let regPrice = new RegExp(/^\d*[1-9]\d*$/);
+    let regPrice = new RegExp(/^\d+([.,]\d{0,2})?$/);
     let boolPrice = regPrice.test(document.getElementById("price").value);
 
     let regDesc = new RegExp(/\w{0,300}$/);
@@ -47,6 +49,5 @@ function publishApp() {
 
             addApplication();
             document.getElementById("uploaded").style.display = "block";
-        
     }
 }

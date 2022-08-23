@@ -48,4 +48,22 @@ async function deleteApp(appID) {
     }
 }
 
-module.exports = {getAll, addApp, getSingleApp, deleteApp};
+
+//updating app, it's working but never used... (not enough time to finish)
+async function updateApp(app) {
+    const client = await connection();
+    try {
+        await client.query(`UPDATE applications.t_apps SET "imageUrl" = '${app.imageUrl}',
+         name = '${app.name}',
+          price = ${app.price},
+           descr = '${app.desc}',
+           "companyName" = '${app.companyName}'
+             WHERE id = '${app.id}'`);
+    } catch(err) {
+        console.log(err);
+    } finally {
+        await client.end();
+    }
+}
+
+module.exports = {getAll, addApp, getSingleApp, deleteApp, updateApp};

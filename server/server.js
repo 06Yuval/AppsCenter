@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const shortid = require("shortid");
-const {getAll, addApp, getSingleApp, deleteApp} =  require("./queries.js");
+const {getAll, addApp, getSingleApp, deleteApp, updateApp} =  require("./queries.js");
 
 const app = express();
 app.use(express.json());
@@ -51,4 +51,24 @@ app.delete("/api/applications/:id", async (req, res) => {
     deleteApp(appID);
     res.send(`Application has been deleted`);
     }
+});
+
+//updating app, it's working but never used... (not enough time to finish)
+app.put("/api/applications/:id", async (req, res) => {
+    const appID = req.params.id;
+    const check = await getSingleApp(appID);
+    if(!check || !check.length) {
+        res.status(404).send("Not exist");
+    } else{
+    const appToUpdate = {
+        "id": appID,
+        "imageUrl": req.body.imageUrl || "Help.png",
+        "name": req.body.name,
+        "price": req.body.price,
+        "desc": req.body.desc || "this app does not have description",
+        "companyName": req.body.companyName || "this app does not have a company",
+    }
+    updateApp(appToUpdate);
+    res.send("Application has been updated");
+ }
 });

@@ -8,9 +8,10 @@ document.getElementById("search").addEventListener("keyup", async () => {
 
 function load(arr) {
     let strHTML = arr.map((x) => `
-    <div class="card mb-3" style="max-width: 500px;">
+    <div class="card mb-3" style="max-width: 800px;">
     <div class="row no-gutters">
       <div class="col-md-4">
+      <button class="btn btn-danger" id="${x.id}" type="button" onclick="deleteApp(this.id)" style="height: 200px;"><i class="fa fa-trash-o"></i></button>
         <img src="../client/assets/images/${x.imageUrl}" class="card-img" style="width: 150px; border-radius: 50%;">
       </div>
       <div class="col-md-8">
@@ -28,7 +29,6 @@ function load(arr) {
 }
 
 
-
     function searchApp(arr) {
       let input = document.getElementById('search').value.toLowerCase();
       const filterArray = arr.filter((app) => {
@@ -37,5 +37,9 @@ function load(arr) {
         }
       });
       load(filterArray);
+    }
+
+    function deleteApp(id) {
+      removeApplication(id);
     }
 
